@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM IMPLEMENTATION</title>      
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="greeting">Hello</h1>
+    </header>
+
+    <div class="container">
+        <div class="boxes-container">
+            <div class="box" id="redBox">Red</div>
+            <div class="box" id="blueBox">Blue</div>
+            <div class="box" id="greenBox">Green</div>
+            <div class="box" id="yellowBox">Yellow</div>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="nameInput" placeholder="Aakash">
+            <button id="greetBtn">Greet</button>
+        </div>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const greeting = document.getElementById('greeting');
+        const nameInput = document.getElementById('nameInput');
+        const greetBtn = document.getElementById('greetBtn');
+        const redBox = document.getElementById('redBox');
+        const blueBox = document.getElementById('blueBox');
+        const greenBox = document.getElementById('greenBox');
+        const yellowBox = document.getElementById('yellowBox');
+
+        // Function to update greeting
+        function updateGreeting() {
+            const name = nameInput.value.trim();
+            if (name) {
+                greeting.textContent = 'Hello, ' + name;
+            } else {
+                greeting.textContent = 'Hello';
+            }
+        }
+
+        // Add event listener to greet button
+        greetBtn.addEventListener('click', updateGreeting);
+
+        // Add event listener for Enter key on input
+        nameInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                updateGreeting();
+            }
+        });
+
+        // Function to change box color
+        function changeBoxColor(box, color) {
+            box.style.backgroundColor = color;
+            box.style.color = 'white';
+        }
+
+        // Add event listeners to boxes
+        redBox.addEventListener('click', function() {
+            changeBoxColor(redBox, 'red');
+        });
+
+        blueBox.addEventListener('click', function() {
+            changeBoxColor(blueBox, 'blue');
+        });
+
+        greenBox.addEventListener('click', function() {
+            changeBoxColor(greenBox, 'green');
+        });
+
+        yellowBox.addEventListener('click', function() {
+            changeBoxColor(yellowBox, 'yellow');
+            // Keep text black for yellow background for better visibility
+            yellowBox.style.color = 'black';
+        });
+    </script>
+</body>
+</html>
