@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Implementation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="greeting">Hello</h1>
+
+    <div class="container">
+        <div class="boxes">
+            <div class="box" id="redBox">Red</div>
+            <div class="box" id="blueBox">Blue</div>
+            <div class="box" id="greenBox">Green</div>
+            <div class="box" id="yellowBox">Yellow</div>
+        </div>
+
+        <div class="input-section">
+            <input type="text" id="nameInput" placeholder="Enter your name">
+            <button id="butt">Greet!</button>
+        </div>
+    </div>
+
+    <script>
+        function greetUser() {
+            var name = document.getElementById('nameInput').value;
+            var greeting = document.getElementById('greeting');
+            
+            if(name) {
+                greeting.textContent = 'Hello, ' + name;
+            } else {
+                greeting.textContent = 'Hello';
+            }
+        }
+        document.getElementById('butt').onclick=function() {
+            greetUser();
+        };
+        document.getElementById('redBox').addEventListener('click', function() {
+            this.style.backgroundColor = 'red';
+        });
+
+        document.getElementById('blueBox').addEventListener('click', function() {
+            this.style.backgroundColor = 'blue';
+        });
+
+        document.getElementById('greenBox').addEventListener('click', function() {
+            this.style.backgroundColor = 'green';
+        });
+
+        document.getElementById('yellowBox').addEventListener('click', function() {
+            this.style.backgroundColor = 'yellow';
+        });
+    </script>
+</body>
+</html>
